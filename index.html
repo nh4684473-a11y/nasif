@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HarmonyGrid Pro</title>
+    <script>
+      // Fix for libraries trying to overwrite read-only window.fetch in some environments
+      (function() {
+        try {
+          const nativeFetch = window.fetch;
+          Object.defineProperty(window, 'fetch', {
+            value: nativeFetch,
+            writable: true,
+            configurable: true
+          });
+        } catch (e) {
+          console.warn('HarmonyGrid: Note - fetch property is read-only in this environment.');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
